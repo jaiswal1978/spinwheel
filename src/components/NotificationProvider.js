@@ -1,3 +1,4 @@
+// request to show notification
 import React, { useState, useEffect } from 'react';
 import { getMessaging, getToken } from "firebase/messaging";
 
