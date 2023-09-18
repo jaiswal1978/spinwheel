@@ -1,0 +1,118 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* This is important for positioning the button */
+    z-index: 1000;
+  }
+  
+  .spin-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1200;
+
+    /* Styling for prominence */
+    background-color: #333; /* Dark background for contrast */
+    color: #fff;  /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5); /* Adds a bit of depth */
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    /* 3D effect */
+    transform: translate(-50%, -50%) perspective(600px) rotateX(5deg);
+}
+
+.spin-button:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+.spin-button:active {
+    /* Pressed state (looks like button is being pressed down) */
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    transform: translate(-50%, -50%) perspective(600px) rotateX(0deg) translateY(2px);
+}
+
+.spin-button:disabled {
+    background-color: #aaa; /* Grayed out */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+}
+
+.winner-announcement {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@keyframes colorChange {
+0% {
+  color: #FF5733; /* Starting color */
+}
+50% {
+  color: #33FF57; /* Mid transition color */
+}
+100% {
+  color: #3355FF; /* Ending color */
+}
+}
+
+.winner-subheading {
+  font-size: 36px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #3355FF; /* Initial color */
+  /* animation: colorChange 1.5s infinite alternate; */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Slight shadow for 3D effect */
+}
+.lottie-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* This centers the Lottie animation over the wheel. */
+  z-index: 1050; /* Makes sure the Lottie animation appears above the wheel but below the button. */
+  width: 80%; /* Adjust this based on your desired Lottie animation size */
+  height: 80%;
+  z-index: 100;
+}
+.confirm-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center;    /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  height: 100vh;          /* Take up the full viewport height */
+  text-align: center;     /* Center the text */
+}
+
+.like-button {
+  /* Styling for prominence */
+  background-color: blue; /* Dark background for contrast */
+  color: #fff;  /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5); /* Adds a bit of depth */
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-top: 20px; /* Spacing between the text and the button */
+
+  /* 3D effect */
+  transform: perspective(600px) rotateX(5deg);
+}
+
+.like-button:hover {
+  transform: perspective(600px) rotateX(0deg); /* Flatten the button a bit on hover for interactivity */
+}
