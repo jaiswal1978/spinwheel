@@ -7,15 +7,15 @@ import Celebration from '../resources/celebration.json'
 export default function RouletteWheel({ probabilities }) {
 
   const data = [
-    { option: "Section 1", probability: probabilities[0] },
-    { option: "Section 2", probability: probabilities[1] },
-    { option: "Section 3", probability: probabilities[2] },
-    { option: "Section 4", probability: probabilities[3] },
-    { option: "Section 5", probability: probabilities[4] },
-    { option: "Section 6", probability: probabilities[5] },
-    { option: "Section 7", probability: probabilities[6] },
-    { option: "Section 8", probability: probabilities[7] },
-    { option: "Section 9", probability: probabilities[8] }
+    { option: "2% off", probability: probabilities[0] },
+    { option: "Free Meal", probability: probabilities[1] },
+    { option: "25% off", probability: probabilities[2] },
+    { option: "Free Meal", probability: probabilities[3] },
+    { option: "Better Luck Next Time", probability: probabilities[4] },
+    { option: "5% off", probability: probabilities[5] },
+    { option: "Free Meal", probability: probabilities[6] },
+    { option: "Better Luck Next Time", probability: probabilities[7] },
+    { option: "Free Meal", probability: probabilities[8] }
   ];
   // Initialization
   const [mustSpin, setMustSpin] = useState(false);
@@ -79,13 +79,25 @@ export default function RouletteWheel({ probabilities }) {
     handleShareOrClose();
   };
   
+  const handleShareOnFacebook = () => {
+    // URL of your specific Facebook post.
+    const facebookPostURL = "https://www.facebook.com/permalink.php?story_fbid=pfbid037WyhziBjMR9yrFMrFomSkz1sucWSccTioPWJNR1shoRDopcYF2Mxq45jum9T4BDhl&id=100091951944833";
+    const encodedFacebookPostURL = encodeURIComponent(facebookPostURL);
+
+    // Open Facebook sharer link in a new window
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedFacebookPostURL}`, '_blank');
+
+    handleShareOrClose();
+};
+
+
   const handleShareOnOtherPlatforms = () => {
     const shareText = "Check out this amazing Roulette Wheel game: ";
     const shareURL = `${shareText}${window.location.href}`;
     const encodedShareURL = encodeURIComponent(shareURL);
     
-    // For Facebook (replace `YOUR_APP_ID`)
-    // window.open(`https://www.facebook.com/dialog/share?app_id=YOUR_APP_ID&display=popup&href=${encodedShareURL}`);
+    // For Facebook
+    // window.open(`https://www.facebook.com/dialog/share?app_id=1204156077653460&display=popup&href=${encodedShareURL}`);
   
     // For Twitter
     // window.open(`https://twitter.com/intent/tweet?text=${encodedShareURL}`);
@@ -136,13 +148,17 @@ export default function RouletteWheel({ probabilities }) {
       )}
 
 {showSharePopup && (
-  <div className="share-popup">
-    <button className="close-button" onClick={handleShareOrClose}>Close</button>
-    <h2>Share This Page</h2>
-    <button onClick={handleShareOnWhatsApp}>Share on WhatsApp</button>
-    <button onClick={handleShareOnOtherPlatforms}>Share on Other Platforms</button>
+  <div className="modal-overlay">
+    <div className="share-popup">
+      <button className="close-button" onClick={handleShareOrClose}>Close</button>
+      <h2>Share This Page</h2>
+      <button onClick={handleShareOnWhatsApp}>Share on WhatsApp</button>
+      <button onClick={() => handleShareOnFacebook()}>Share on Facebook</button>
+      <button onClick={handleShareOnOtherPlatforms}>Share on Other Platforms</button>
+    </div>
   </div>
 )}
+
     </>
   );
 }

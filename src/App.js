@@ -10,9 +10,9 @@ import Roulette from './components/Roulette';
 function App() {
   return (
     <>
-      <Pwa />
-      <NotificationProvider/>
-      <Notification />
+      {/* <Pwa /> */}
+      {/* <NotificationProvider/> */}
+      {/* <Notification /> */}
       <h1 className='text-center'>This is a test app for PWA and push notification</h1>
       <Roulette probabilities={[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]} />
       <div>
