@@ -41,8 +41,8 @@ function Pwa() {
     <>
     <div className="alert alert-warning alert-dismissible fade show" role="alert" onClick={promptInstall}>
       <div >
-        <p className='text-center'>We Occasionally Roll out Limited Time Discount Offers
-        <strong> Add the app to your Home Screen </strong> & be the first to get notified of <strong>Discount OFFERS!!!</strong>
+        <p className='text-center'>This is a PWA Example. By clicking on this Banner it will ask a permission to install the App
+        <strong> By clicking on this Banner </strong> it will ask a permission to <strong>install the App on your phone or System.</strong> This can also be used to send notifications.
         </p>
       </div>
       <button type="button" className="btn-close" onClick={dismissAlert} aria-label="Close"></button>

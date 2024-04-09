@@ -58,3 +58,6 @@
   width: 80%;
   max-width: 400px;
 }
+.segment-text {
+  word-wrap: break-word;
+}

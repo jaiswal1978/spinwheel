@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { Wheel } from "react-custom-roulette";
-import "../resources/RouletteWheel.css";
 import { Button, Modal } from 'react-bootstrap';
-import RouletteSlideVerA from "./RouletteSlider";
+import "../resources/RouletteWheel.css";
 
-export default function RouletteWheel({ probabilities }) {
+export default function RouletteSlideVerA({ probabilitiesVerA }) {
 
   const data = [
-    { option: "1 - 2% off", probability: probabilities[0] },
-    { option: "2 - Free Meal", probability: probabilities[1] },
-    { option: "3 - 25% off", probability: probabilities[2] },
-    { option: "4 - Free Meal", probability: probabilities[3] },
-    { option: "5 - Better Luck Next Time", probability: probabilities[4] },
-    { option: "6 - 5% off", probability: probabilities[5] },
-    { option: "7 - Free Meal", probability: probabilities[6] },
-    { option: "8 - Better Luck Next Time", probability: probabilities[7] },
-    { option: "9 - Free Meal", probability: probabilities[8] }
+    { option: "1 - 2% off", probability: probabilitiesVerA[0] },
+    { option: "2 - Free Meal", probability: probabilitiesVerA[1] },
+    { option: "3 - 25% off", probability: probabilitiesVerA[2] },
+    { option: "4 - Free Meal", probability: probabilitiesVerA[3] },
+    { option: "5 - Better Luck Next Time", probability: probabilitiesVerA[4] },
+    { option: "6 - 5% off", probability: probabilitiesVerA[5] },
+    { option: "7 - Free Meal", probability: probabilitiesVerA[6] },
+    { option: "8 - Better Luck Next Time", probability: probabilitiesVerA[7] },
+    { option: "9 - Free Meal", probability: probabilitiesVerA[8] }
   ];
-  // Initialization
+
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(-1);
   const [showSubheading, setShowSubheading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [sliderValue, setSliderValue] = useState(1);
 
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
-  // Handling the spin button click
+  const handleSliderChange = (event) => {
+    setSliderValue(parseInt(event.target.value));
+  };
+
+  const handleSave = () => {
+    console.log('Selected value:', sliderValue);
+    handleCloseModal();
+  };
+
   const handleSpinClick = () => {
-    // Show the social media share popup on first spin
-    // if (spinCounter === 0) {
-    //   setShowSharePopup(true);
-    //   return;
-    // }
-
-    // Regular spin logic
     setMustSpin(true);
     setShowSubheading(false);
     const randomValue = Math.random();
@@ -53,7 +57,6 @@ export default function RouletteWheel({ probabilities }) {
     }
   };
 
-  // React to the end of a spin
   useEffect(() => {
     if (!mustSpin && prizeNumber !== -1) {
       setTimeout(() => {
@@ -61,26 +64,6 @@ export default function RouletteWheel({ probabilities }) {
       }, 1000);
     }
   }, [mustSpin]);
-
-
-
-  const [showModal, setShowModal] = useState(false);
-  const [sliderValue, setSliderValue] = useState(1);
-
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
-
-  const handleSliderChange = (event) => {
-    // Update the state with the new slider value
-    setSliderValue(parseInt(event.target.value));
-  };
-
-  const handleSave = () => {
-    console.log('Selected value:', sliderValue);
-    handleCloseModal();
-  };
-
-
 
   return (
     <>
@@ -135,15 +118,14 @@ export default function RouletteWheel({ probabilities }) {
         </div>
           
         <Modal.Body className="text-center m-5">
-          {/* <input
+          <input
             type="range"
             min="1"
             max="9"
             value={sliderValue}
             onChange={handleSliderChange}
           />
-          Selected value: {sliderValue} */}
-          Spin Wheel is preset to always won on No 8.
+          Selected value: {sliderValue}
         </Modal.Body>
           
         <div className="d-flex justify-content-center align-items-center">
