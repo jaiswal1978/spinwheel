@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/spinwheel/static/css/main.d5d3949c.css",
+    "main.js": "/spinwheel/static/js/main.7d55b9d3.js",
+    "static/js/787.98a244d8.chunk.js": "/spinwheel/static/js/787.98a244d8.chunk.js",
+    "service-worker.js": "/spinwheel/service-worker.js",
+    "index.html": "/spinwheel/index.html",
+    "main.d5d3949c.css.map": "/spinwheel/static/css/main.d5d3949c.css.map",
+    "main.7d55b9d3.js.map": "/spinwheel/static/js/main.7d55b9d3.js.map",
+    "787.98a244d8.chunk.js.map": "/spinwheel/static/js/787.98a244d8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5d3949c.css",
+    "static/js/main.7d55b9d3.js"
+  ]
+}
